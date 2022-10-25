@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class MyArrayList {
     public ArrayList<Object> List_;
+    public int full=0;
 
     public MyArrayList(){
         this.List_=new ArrayList<>();
@@ -15,7 +16,15 @@ public class MyArrayList {
     }
 
     public void add(Object o){
-        this.List_.add(o);
+        if(o != null){
+            if (full < List_.size()){
+                this.List_.set(this.full,o);
+            }
+            else {
+                this.List_.add(o);
+            }
+            this.full++;
+        }
     }
 
     public Object get(int index){

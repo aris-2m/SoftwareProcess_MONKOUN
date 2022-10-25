@@ -41,27 +41,40 @@ public class Utils{
     }
 
     public Additionnable add_(Additionnable a1, Additionnable a2){
+        if (a1 == null) return a2;
+        if (a2 == null) return a1;
         return a1.addTo(a2);
     }
 
-    public int compare_(Comparable a1, Comparable a2){
-        return a1.compareTo(a2);
+    public int compare_(Comparable c1, Comparable c2){
+        if (c1 == c2) return 0;
+        if (c1 == null) return -1;
+        if (c2 == null) return 1;
+        return c1.compareTo(c2);
     }
 
     public Clonable clone_(Clonable c){
+        if(c == null) return null;
         return c.clone();
     }
 
-    public Enregistable save_(Enregistable s){
-        return s.save();
+    public boolean save_(Enregistable e){
+        if(e == null)
+            throw new NullPointerException("Impossible to save this ...");
+
+        return e.save();
     }
 
-    public Envoyable send_(Envoyable s){
-        return s.send();
+    public boolean send_(Envoyable e){
+        if(e == null)
+            throw new NullPointerException("Impossible to send this ...");
+        return e.send();
     }
 
-    public Testable test_(Testable s){
-        return s.test();
+    public boolean test_(Testable t){
+        if(t == null)
+            throw new NullPointerException("Impossible to test this ...");
+        return t.test();
     }
 }
 
